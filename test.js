@@ -381,7 +381,7 @@ Pour aller avec cette dernière, essaye le **$inventaire** pour apercevoir ton i
     //$gift
     if(message.content.startsWith(prefix + "gift") && (idAuthorId === "332503820271616000")){
         const tab = message.content.split(' ');
-        let gift = parseInt(tab ["1"], 10)
+        var gift = parseInt(tab ["1"], 10)
         if( !gift){gift = 160;}
         if((gift >0) && (gift<=3200) ){
             idUser.forEach(element => {
@@ -389,7 +389,7 @@ Pour aller avec cette dernière, essaye le **$inventaire** pour apercevoir ton i
             });
 
             Savebdd();
-            message.channel.send(`Tout le monde viens de recevoir ${gift}<:primo:823874382391934977>.\nMerci PAIMON ! `)
+            message.channel.send(`Tout le monde viens de recevoir **${gift}** <:primo:823874382391934977>.\nMerci PAIMON ! `)
         }
     }
 
