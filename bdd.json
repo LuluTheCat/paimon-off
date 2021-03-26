@@ -3,5 +3,12 @@
         "minute": 11,
         "heure": 15,
         "jour": 5
+    },
+    "332503820271616000": {
+        "Primo": 3200,
+        "recharge": true,
+        "personnage": {},
+        "arme": {},
+        "jour": 0
     }
 }
