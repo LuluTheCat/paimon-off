@@ -389,7 +389,7 @@ Pour aller avec cette dernière, essaye le **$inventaire** pour apercevoir ton i
             });
 
             Savebdd();
-            message.channel.send(`Tout le monde viens de recevoir **${gift}** <:primo:823874382391934977>.\nMerci PAIMON ! `)
+            message.channel.send(`Tout le monde viens de recevoir **${gift}**<:primo:823874382391934977>.\nMerci PAIMON ! `)
         }
     }
 
