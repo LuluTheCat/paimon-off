@@ -326,32 +326,40 @@ Pour aller avec cette dernière, essaye le **$inventaire** pour apercevoir ton i
         var inventaireP =[]
         var inventaireA =[]
 
-        for(item in bdd[member.id]["personnage"]){  
-            inventaireP.push(item)
+        const tabinv = message.content.split(' ');
+        let invp = parseInt(tabinv ["1"], 10)
+        console.log(tabinv[1])
+
+        if(`${bdd[`${member.id}`]}` === "undefined"){console.log("pas d'inventaire") 
+        }else{
+
+            for(item in bdd[member.id]["personnage"]){  
+                inventaireP.push(item)
+            }
+            for(item in bdd[member.id]["arme"]){  
+                inventaireA.push(item)
+            }
+
+            var invEmbed = new Discord.MessageEmbed()
+                .setColor(`#581845`)
+                .setTitle(`Inventaire de ${idTag}`)
+                .setThumbnail(`${avatar}`)
+
+                var chaineP='';
+                var chaineA='';
+
+                inventaireP.forEach(element => {
+                    chaineP = `${chaineP}` + `${element}` + `\n`
+                });
+                inventaireA.forEach(element => {
+                    chaineA = `${chaineA}` + `${element}` + `\n`
+                });
+                if((chaineA === '') && (chaineP != '')) {invEmbed.addFields({name: `Personnages:`, value : `${chaineP}`});}
+                else if((chaineP === '') && (chaineA != '')) {invEmbed.addFields({name: `Armes:`, value : `${chaineA}`});}
+                else if((chaineP != '') && (chaineA != '')) {invEmbed.addFields({name: `Personnages:`, value : `${chaineP}`},{name: `Armes:`, value : `${chaineA}`});}
+                
+            message.channel.send(invEmbed);
         }
-        for(item in bdd[member.id]["arme"]){  
-            inventaireA.push(item)
-        }
-
-        var invEmbed = new Discord.MessageEmbed()
-            .setColor(`#581845`)
-            .setTitle(`Inventaire de ${idTag}`)
-            .setThumbnail(`${avatar}`)
-
-            var chaineP='';
-            var chaineA='';
-
-            inventaireP.forEach(element => {
-                chaineP = `${chaineP}` + `${element}` + `\n`
-            });
-            inventaireA.forEach(element => {
-                chaineA = `${chaineA}` + `${element}` + `\n`
-            });
-            if((chaineA === '') && (chaineP != '')) {invEmbed.addFields({name: `Personnages:`, value : `${chaineP}`});}
-            else if((chaineP === '') && (chaineA != '')) {invEmbed.addFields({name: `Armes:`, value : `${chaineA}`});}
-            else if((chaineP != '') && (chaineA != '')) {invEmbed.addFields({name: `Personnages:`, value : `${chaineP}`},{name: `Armes:`, value : `${chaineA}`});}
-            
-        message.channel.send(invEmbed);
         
     }
 
@@ -374,7 +382,6 @@ Pour aller avec cette dernière, essaye le **$inventaire** pour apercevoir ton i
     if(message.content.startsWith(prefix + "gift") && (idAuthorId === "332503820271616000")){
         const tab = message.content.split(' ');
         let gift = parseInt(tab ["1"], 10)
-        console.log(gift)
         if( !gift){gift = 160;}
         if((gift >0) && (gift<=3200) ){
             idUser.forEach(element => {
