@@ -5,7 +5,7 @@ const bddrepas = require("./repas.json"); //Lien vers la bdd
 const bddsummon = require("./summon.json"); //Lien vers la bdd
 const prefix = "$"; //Création du préfixe
 const fs = require("fs"); //Création de la variable fs pour naviguer dans la bdd
-let r = fs.readFileSync('bdd.json');
+let r = fs.readFileSync('./bdd.json');
 let s = JSON.parse(r);
 
 //Toutes les actions à faire quand le bot se connecte
